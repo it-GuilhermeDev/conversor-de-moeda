@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`https://v6.exchangeratesapi.io/latest?base=${moedaOrigemSelecionada}&symbols=${moedaDestinoSelecionada}&apikey=221a8b3ae9d20af6b6ebf001`);
+            const response = await fetch(`https://v6.exchangeratesapi.io/latest?base=${moedaOrigemSelecionada}&symbols=${moedaDestinoSelecionada}&apikey=bfca6c0552355881a36ba3ec`);
             const data = await response.json();
 
             // Verificando se ocorreu um erro na resposta da API
