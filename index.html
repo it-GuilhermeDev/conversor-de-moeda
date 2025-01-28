@@ -7,12 +7,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Conversor de Moeda</h1>
-    <label for="amount">Valor:</label>
-    <input type="number" id="amount" name="amount">
-    <button id="convert-btn">Converter</button>
+    <div class="container">
+        <h1>Conversor de Moeda</h1>
 
-    <p id="result"></p>
+        <div class="form-group">
+            <label for="fromCurrency">Escolha a moeda de origem:</label>
+            <select id="fromCurrency">
+                <option value="USD">Dólar (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="BRL">Real (BRL)</option>
+                <!-- Você pode adicionar mais moedas aqui -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="toCurrency">Escolha a moeda de destino:</label>
+            <select id="toCurrency">
+                <option value="BRL">Real (BRL)</option>
+                <option value="USD">Dólar (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <!-- Você pode adicionar mais moedas aqui -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Digite o valor:</label>
+            <input type="number" id="amount" placeholder="Valor">
+        </div>
+
+        <button onclick="convertCurrency()">Converter</button>
+
+        <div id="result">
+            <p>Resultado: <span id="conversionResult">0</span></p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
