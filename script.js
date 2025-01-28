@@ -9,7 +9,7 @@ function convertCurrency() {
         return;
     }
 
-    const apiKey = 'SUA_API_KEY_AQUI';  // Substitua pela sua chave da API
+    const apiKey = 221a8b3ae9d20af6b6ebf001;  // Substitua pela sua chave da API
     const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
 
     // Faz a requisição para obter a taxa de câmbio
