@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,39 +9,19 @@
 <body>
     <div class="container">
         <h1>Conversor de Moeda</h1>
-
-        <div class="form-group">
-            <label for="fromCurrency">Escolha a moeda de origem:</label>
-            <select id="fromCurrency">
-                <option value="USD">Dólar (USD)</option>
-                <option value="EUR">Euro (EUR)</option>
-                <option value="BRL">Real (BRL)</option>
-                <!-- Você pode adicionar mais moedas aqui -->
+        <form>
+            <input type="number" id="valor" placeholder="Valor" required>
+            <select id="moedaOrigem">
+                <!-- Opções de moedas serão inseridas aqui -->
             </select>
-        </div>
-
-        <div class="form-group">
-            <label for="toCurrency">Escolha a moeda de destino:</label>
-            <select id="toCurrency">
-                <option value="BRL">Real (BRL)</option>
-                <option value="USD">Dólar (USD)</option>
-                <option value="EUR">Euro (EUR)</option>
-                <!-- Você pode adicionar mais moedas aqui -->
+            <span>para</span>
+            <select id="moedaDestino">
+                <!-- Opções de moedas serão inseridas aqui -->
             </select>
-        </div>
-
-        <div class="form-group">
-            <label for="amount">Digite o valor:</label>
-            <input type="number" id="amount" placeholder="Valor">
-        </div>
-
-        <button onclick="convertCurrency()">Converter</button>
-
-        <div id="result">
-            <p>Resultado: <span id="conversionResult">0</span></p>
-        </div>
+            <button type="submit">Converter</button>
+        </form>
+        <div id="resultado"></div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
