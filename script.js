@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const moedaDestinoSelecionada = moedaDestino.value;
         const valor = parseFloat(valorInput.value);
 
-        if (!valor || moedaOrigemSelecionada === moedaDestinoSelecionada) {
+        // Validação do valor e moedas
+        if (isNaN(valor) || valor <= 0 || moedaOrigemSelecionada === moedaDestinoSelecionada) {
             resultadoDiv.textContent = 'Por favor, insira um valor válido e selecione moedas diferentes.';
             return;
         }
@@ -38,15 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(`https://v6.exchangeratesapi.io/latest?base=${moedaOrigemSelecionada}&symbols=${moedaDestinoSelecionada}&apikey=221a8b3ae9d20af6b6ebf001`);
             const data = await response.json();
 
+            // Verificando se ocorreu um erro na resposta da API
             if (data.error) {
                 resultadoDiv.textContent = 'Erro ao obter a taxa de câmbio.';
                 return;
             }
 
+            // Pegando a taxa de câmbio
             const taxa = data.rates[moedaDestinoSelecionada];
             const resultado = (valor * taxa).toFixed(2);
             resultadoDiv.textContent = `${valor} ${moedaOrigemSelecionada} é igual a ${resultado} ${moedaDestinoSelecionada}`;
         } catch (error) {
+            // Caso o fetch falhe ou a API não esteja acessível
             resultadoDiv.textContent = 'Erro ao obter a taxa de câmbio.';
         }
     }
