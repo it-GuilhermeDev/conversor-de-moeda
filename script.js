@@ -1,10 +1,30 @@
-document.getElementById('convert-btn').addEventListener('click', function() {
+function convertCurrency() {
+    const fromCurrency = document.getElementById('fromCurrency').value;
+    const toCurrency = document.getElementById('toCurrency').value;
     const amount = document.getElementById('amount').value;
-    const result = document.getElementById('result');
 
-    // Vamos converter para uma moeda fictícia (exemplo)
-    const conversionRate = 5.5; // 1 moeda local = 5.5 fictícias
-    const convertedAmount = amount * conversionRate;
+    // Verifica se o valor inserido é válido
+    if (amount === "" || isNaN(amount) || amount <= 0) {
+        alert("Por favor, insira um valor válido para conversão.");
+        return;
+    }
 
-    result.textContent = `Valor convertido: ${convertedAmount} (moeda fictícia)`;
-});
+    const apiKey = 'SUA_API_KEY_AQUI';  // Substitua pela sua chave da API
+    const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
+
+    // Faz a requisição para obter a taxa de câmbio
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === "success") {
+                const conversionRate = data.conversion_rates[toCurrency];
+                const result = (amount * conversionRate).toFixed(2);
+                document.getElementById('conversionResult').textContent = result;
+            } else {
+                alert("Erro ao buscar taxas de câmbio.");
+            }
+        })
+        .catch(error => {
+            alert("Erro ao acessar a API: " + error);
+        });
+}
